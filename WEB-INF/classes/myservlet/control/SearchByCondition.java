@@ -23,33 +23,14 @@ public class SearchByCondition extends HttpServlet{
       return;
     }
     String condition="";
-    if(radioMess.equals("cosmetic_number")){
-      condition= "SELECT * FROM cosmeticForm where cosmetic_number ='"+searchMess+"'";
+    if(radioMess.equals("director")){
+      condition= "SELECT * FROM ticket where director LIKE '%"+searchMess+"%'";
     }
-    else if(radioMess.equals("cosmetic_name")){
-      condition= "SELECT * FROM cosmeticForm where cosmetic_name LIKE '%"+searchMess+"%'";
+    else if(radioMess.equals("film_name")){
+      condition= "SELECT * FROM ticket where name LIKE '%"+searchMess+"%'";
     }
-    else if(radioMess.equals("cosmetic_price")){
-      double max=0, min=0;
-      String regex="[^0123456789.]";
-      String []priceMess= searchMess.split(regex);
-      if(priceMess.length==1){
-        max= min= Double.parseDouble(priceMess[0]);
-      }
-      else if(priceMess.length== 2){
-        min= Double.parseDouble(priceMess[0]);
-        max= Double.parseDouble(priceMess[1]);
-        if(max<min){
-          double t = max;
-          max=min;
-          min=t;
-        }
-      }
-      else{
-        fail(request,response,"输入的价格格式有错误");
-        return;
-      }
-      condition= "SELECT * FROM cosmeticForm where "+"cosmetic_price <= "+max+" AND cosmetic_price >= "+min;
+    else if(radioMess.equals("date")){
+      condition= "SELECT * FROM ticket where name = "+searchMess;
     }
     HttpSession session=request.getSession(true);
     Connection con= null;
@@ -65,7 +46,7 @@ public class SearchByCondition extends HttpServlet{
       dataBean=new DataByPage();    //创建 Javabean对象
       session.setAttribute("dataBean",dataBean);
     }
-    String url="jdbc:mysql://127.0.0.1/shop?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+    String url="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
     try{
       con= DriverManager.getConnection(url);
       Statement sql= con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -88,7 +69,7 @@ public class SearchByCondition extends HttpServlet{
       out.println("<html><body>");
       out.println("<h2>"+backNews+"</h2>");
       out.println("返回:");
-      out.println("<a href=searchDestination.jsp>查询化妆品</a>");
+      out.println("<a href=searchTicket.jsp>查询电影</a>");
       out.println("</body></html>");
     }
     catch(IOException exp){}

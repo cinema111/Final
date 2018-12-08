@@ -1,35 +1,16 @@
 <%@ page contentType="text/html;charset=gb2312" %>
-<html>
-<head><style type="text/css">
-@import url("css/index.css");
-</style>
-</head>
-
-<body>
-<div id="body_warpper">
-<div class="header">
- <ul>
-    <li>< a href=" ">退出</ a></li>
-    <li>< a href="inputRegisterMess.jsp#content">注册</ a></li>
-    <li>< a href="login.jsp#content">登录</ a></li>
-  </ul>
-<div class="zhongjian"> <h1>网上购票系统</h1></div>
-
-   
-<p align="center" color="#FFF">线上订票，方便快捷</p >
-<div align="center" class="daohang">
-<ul>
-  <li>< a href="index.jsp">首页</ a></li>
-   <li>< a href="lookCosmetic.jsp#content">购买车票</ a>
-    <ul>< a href="#">火车票</ a></ul>
-    <ul>< a href="#">动车票</ a></ul>
-</li>
-  <li>< a href="searchCosmetic.jsp#content">查询车票</ a></li>
-  <li>< a href="Order.jsp#content">我的订单</ a></li>
-   <li>< a href="ShoppingCar.jsp#content">历史记录</ a></li>
-</ul>
+<div align="center">
+<Font color=red><H3>看着看着，我都哭了，不自觉地挥动了手。</H3></Font>
+<table cellSpacing =“1”cellPadding =“1”width =“660”align =“center”border =“0”>
+<tr valign="bottom">
+  <td><A href="inputRegisterMess.jsp">注册</font></A></td>
+  <td><A href="login.jsp">登录</A></td>
+  <td><A href="lookTicket.jsp">热门电影</A></td>
+  <td><A href="searchTicket.jsp">查询电影</A></td>
+  <td><A href="lookShoppingCar.jsp">查看购物车</A></td>
+  <td><A href="lookOrderForm.jsp">查看订单</A></td>
+  <td><A href="exitServlet">退出登录</A></td>
+  <td><A href="index.jsp">主页</A></td>
+</tr>
+</table>
 </div>
-</div></div>
-
-</body>
-</html>

@@ -2,7 +2,7 @@
 <jsp:useBean id="loginBean" class="mybean.data.Login" scope="session"/>
 <%@ page import="java.sql.*" %>
 <HIML><HEAD><%@ include file="head.txt"%></HEAD>
-<BODY background= image/happy.jpg>
+<BODY background= image/welcome.jpg>
 <div align="center">
 <%
   if(loginBean== null){
@@ -21,7 +21,7 @@
   }
   catch(Exception e){}
   try{
-    String url="jdbc:mysql://127.0.0.1/shop?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+    String url="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
     con=DriverManager.getConnection(url);
     sql=con.createStatement();
     String cdn="SELECT id,mess,sum FROM orderForm where logname='"+loginBean.getLogname()+"'";
@@ -30,7 +30,7 @@
     out.print("<tr>");
     out.print("<th width=100>"+"订单号");
     out.print("<th width=100>"+"信息");
-    out.print("<th width=100>"+"价格");
+    out.print("<th width=100>"+"总价");
     out.print("</TR>");
     while(rs.next()){
       out. print("<tr>");

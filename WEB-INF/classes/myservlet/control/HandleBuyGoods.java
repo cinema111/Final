@@ -37,7 +37,7 @@ public class HandleBuyGoods extends HttpServlet {
         catch(Exception exp){
           response.sendRedirect("login.jsp");
         }
-        String uri="jdbc:mysql://127.0.0.1/trainticket?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+        String uri="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
         Connection con;
         PreparedStatement sql;
         try{ con= DriverManager.getConnection(uri);

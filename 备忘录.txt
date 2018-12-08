@@ -1,0 +1,2 @@
+ByPageShow.jsp  
+	String goods="("+number+","+name+","+director+","+date+","+price+")#"+price;

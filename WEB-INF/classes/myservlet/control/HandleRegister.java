@@ -19,7 +19,7 @@ public class HandleRegister extends HttpServlet{
 		return s;
 	}
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
-		String uri="jdbc:mysql://127.0.0.1/trainticket?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+		String uri="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
 		Connection con;
 		PreparedStatement sql;
 		Register userBean=new Register();
@@ -35,7 +35,7 @@ public class HandleRegister extends HttpServlet{
 		if(password==null)
         password="";
 		if(!password.equals(again_password)){
-			userBean.setBackNews("两次密码不同，注册失败,");
+			userBean.setBackNews("两次密码不同，注册失败,这都能输错？");
 			RequestDispatcher dispatcher=request.getRequestDispatcher("inputRegisterMess.jsp");
 			dispatcher.forward(request,response);
 			return;
@@ -59,7 +59,7 @@ public class HandleRegister extends HttpServlet{
      sql.setString(5,handleString(realname));
 		int m=sql.executeUpdate();
 		if (m!=0){
-			backNews="注册成功";
+			backNews="注册成功，多来玩";
 			userBean.setBackNews(backNews);
 			userBean.setLogname(logname);
 			userBean.setPhone(handleString(phone));
@@ -68,13 +68,13 @@ public class HandleRegister extends HttpServlet{
 		  }
 		}
 		else{
-			backNews="信息填写不完整或名字中有非法字符";
+			backNews="信息填写不完整或名字中有非法字符，老弟也不检查检查";
 			userBean.setBackNews(backNews);
 		}
 		con.close();
 		}
 		catch(SQLException exp){
-			backNews="该会员名已被使用，请您更换名字" + exp;
+			backNews="换个名字吧帅哥，这个已经佳人有约了" + exp;
 			userBean.setBackNews(backNews);
 		}
 		RequestDispatcher dispatcher=request.getRequestDispatcher("inputRegisterMess.jsp");

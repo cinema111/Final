@@ -2,23 +2,18 @@
 <%@ page import="mybean.data.DataByPage" %>
 <%@ page import="com.sun.rowset.*" %>
 <jsp:useBean id="dataBean" class="mybean.data.DataByPage" scope="session"/>
-
 <HTML>
 <head><%@ include file="head.txt" %>
-<style type="text/css">
-@import url("css/common.css");
 </style></head>
 <Body>
-<div class="content" align="center">
-<input type="button" name="Submit" onClick="javascript:history.back(-1);" value="返回" class="btn">
 <center>
 <BR><h3>当前显示的内容是：</h3>
 <table border=2>
 <tr>
-    <th>列车号</th>
-    <th>起点</th>
-    <th>终点</th>
-    <th>时间</th>
+    <th>票号</th>
+    <th>电影名</th>
+    <th>导演</th>
+    <th>日期</th>
     <th>票价</th>
     <th>查看详情</th>
     <th>添加到购物车</th>
@@ -28,14 +23,14 @@
 <%
   CachedRowSetImpl rowSet=dataBean.getRowSet();
   if(rowSet==null){
-    out.print("抱歉，没有相关车票信息"+"<br/>");
+    out.print("抱歉，没有相关播放场次"+"<br/>");
     return;
   }
   rowSet.last();
   int totalRecord=rowSet.getRow();
-  out.println("全部记录数"+totalRecord);   
-  int pageSize=dataBean.getPageSize();    
-  int totalPages=dataBean.getTotalPages();    
+  out.println("全部记录数"+totalRecord);
+  int pageSize=dataBean.getPageSize();
+  int totalPages=dataBean.getTotalPages();
   if(totalRecord%pageSize==0)
       totalPages=totalRecord/pageSize;
   else
@@ -53,9 +48,10 @@
     for(int i=1;i<=pageSize&&boo;i++){
       String number=rowSet.getString(1);
       String name=rowSet.getString(2);
-      String maker=rowSet.getString(3);
-      String price=rowSet.getString(4);
-      String goods="("+number+","+name+","+maker+","+price+")#"+price;
+      String director=rowSet.getString(3);
+      String date=rowSet.getString(4);
+      String price=rowSet.getString(5);
+      String goods="("+number+","+name+","+director+","+date+","+price+")#"+price;
       goods=goods.replaceAll("\\p{Blank}","");
       String button="<form action='putGoodsServlet' method='post'>"+
         "<input type='hidden' name='java' value="+goods+">"+
@@ -65,8 +61,9 @@
         "<input type='submit' value='查看细节' class='xijie'></form>";
       out.print("<tr align='center'>");
       out.print("<td>"+number+"</td>");
-      out.print("<td>"+start+"</td>");
-      out.print("<td>"+destination+"</td>");
+      out.print("<td>"+name+"</td>");
+      out.print("<td>"+director+"</td>");
+      out.print("<td>"+date+"</td>");
       out.print("<td>"+price+"</td>");
       out.print("<td>"+detail+"</td>");
       out.print("<td>"+button+"</td>");
@@ -97,19 +94,4 @@
     <Input type=submit name="g" value ="提交" class="tijiao"></FORM></td></tr>
 </Table>
 </Center>
-</div>
-
-
-<div class="footer">
-<p align="center"><a href="index.jsp">首页</a> |
-<a href="lookTicket.jsp#content">查询车票</a>|
-<a href="searchDestination.jsp#content">查询终点</a> |
-<a href="Order.jsp#content">查看订单</a> |
-<a href="ShoppingCar.jsp#content">我的车票</a>
-<br/><br />
-Copyright &copy; &nbsp;<a href="index.jsp">南山火车</a>&nbsp;&nbsp;2018&nbsp;&nbsp;| &nbsp;&nbsp;热线：888-520-1314&nbsp;&nbsp;| &nbsp;&nbsp;地址：深圳市南山区华侨城暨南大学深圳旅游学院</p>
-</div>
-</div>
-
-
 </BODY ></HTML>

@@ -33,11 +33,11 @@ public class QueryAllRecord extends HttpServlet{
       dataBean=new DataByPage();
       session.setAttribute("dataBean",dataBean);
     }
-    String uri="jdbc:mysql://127.0.0.1/trainticket?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+    String uri="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
     try{
       con= DriverManager.getConnection(uri);
       Statement sql=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-      ResultSet rs=sql.executeQuery("SELECT * FROM cosmeticform WHERE ID ="+id);
+      ResultSet rs=sql.executeQuery("SELECT * FROM ticket WHERE ID ="+id);
       rowSet=new CachedRowSetImpl();    //创建行集对象
       rowSet.populate(rs);
       dataBean.setRowSet(rowSet);//行集数据存储到databean中

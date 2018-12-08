@@ -3,7 +3,7 @@
 <%@ page import ="java.util.*" %>
 <jsp:useBean id="loginBean" class= "mybean.data.Login" scope="session"/>
 <HTML><HEAD><%@ include file ="head.txt" %>
-<BODY background= image/happy.jpg><font size=2>
+<BODY background= image/welcome.jpg><font size=2>
 <div align = "center">
 <%  if(loginBean==null){
         response.sendRedirect("login.jsp");
@@ -35,7 +35,7 @@
         String del = "<form action='deleteServlet' method='post'>"
           +"<input type ='hidden' name='delete' value ="+goods+">"
           +"<input type='submit' value='É¾³ý'></form>";
-        out.print("<tr><td>"+ showGoods+"</td>");
+        out.print("<tr><td>"+showGoods+"</td>");
         out.print("<td>"+del+"</td></tr>");
     }
     out.print("</table>");

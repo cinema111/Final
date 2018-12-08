@@ -28,7 +28,7 @@ public class HandleLogin extends HttpServlet{
         String password = request.getParameter("password").trim();
         logname= handleString(logname);
         password= handleString(password);
-        String url="jdbc:mysql://127.0.0.1/trainticket?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
+        String url="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
         boolean boo = (logname.length()>0) && (password.length()>0);
         try{
             con = DriverManager.getConnection(url);

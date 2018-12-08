@@ -1,0 +1,47 @@
+开发过程所遇问题记录
+
+零.无法浏览应用
+  在浏览器内进行浏览，提示404错误。
+  通过仿生实验发现，是由于web.xml文件导致。
+  目前仍在对web.xml文件进行排查
+
+  是web.xml里面的一堆servlet和servlet-mapping内容所致
+  进一步排查，发现是标签的完整性除了问题
+  wrong: <url-pattern><url-pattern>
+  right: <url-pattern></url-pattern>
+
+一.HTML页面不被识别
+  在index.jsp和head.txt的开发过程中，发现超链接，h1标签等都无法被识别，都被以
+  文字的形式进行展示。
+  经过排查，发现是html的标签名与左括号必须连在一起。
+  wrong： < a>
+  right:  <a>
+
+二.提示unsupported encoding [ GB2312]
+解决办法：charset与GB2312间不能有空格
+
+三.提示head.txt的Page属性值与JSP所设置的矛盾。
+将JSP页面的page属性向head.txt同步，有多少个空格都要一模一样。
+
+四.JSP页面静态文字的中文乱码问题
+解决方法：统一口径，charset都用utf-8，我已将所有jsp文件进行修改
+
+五.点击注册时（要连接数据库），提示The server time zone value '乱码' is unrecognized or represents more than one time zone.
+解决方法：时区的错误，在项目代码-数据库连接URL后，加上 （注意大小写必须一致）?serverTimezone=UTC
+
+六.
+A.数字1和英文l的区别：  看着  1l  ，左边是数字
+B.数字0和英文o的区别：  看着  0o  ，左边是数字
+
+七.
+查询化妆品功能，按价格查询的数据，是（型号，名称查询）查询所得的数据的副本。
+价格查询，是到上次做另外两个查询的结果中去找，把上次的查询结果当作数据库了。
+而且是直接展示上次查到的结果。
+解决方法：condition表达是错误。
+
+八.无法生成第二个订单。
+案例：第一个订单id为0，尝试生成第二个订单是提示错误
+ErrorCode：java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '0' for key 'PRIMARY'
+解决方法：Mysql的订单表里的id属性，应设置为自增（同样与servlet提交订单的方法有关）。
+
+九.放入购物车所转去的页面显示有问题。

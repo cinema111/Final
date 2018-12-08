@@ -1,0 +1,35 @@
+<%@ page contentType="text/html;charset=gb2312" %>
+<html>
+<head><style type="text/css">
+@import url("css/index.css");
+</style>
+</head>
+
+<body>
+<div id="body_warpper">
+<div class="header">
+ <ul>
+    <li>< a href=" ">退出</ a></li>
+    <li>< a href="inputRegisterMess.jsp#content">注册</ a></li>
+    <li>< a href="login.jsp#content">登录</ a></li>
+  </ul>
+<div class="zhongjian"> <h1>网上购票系统</h1></div>
+
+   
+<p align="center" color="#FFF">线上订票，方便快捷</p >
+<div align="center" class="daohang">
+<ul>
+  <li>< a href="index.jsp">首页</ a></li>
+   <li>< a href="lookCosmetic.jsp#content">购买车票</ a>
+    <ul>< a href="#">火车票</ a></ul>
+    <ul>< a href="#">动车票</ a></ul>
+</li>
+  <li>< a href="searchCosmetic.jsp#content">查询车票</ a></li>
+  <li>< a href="Order.jsp#content">我的订单</ a></li>
+   <li>< a href="ShoppingCar.jsp#content">历史记录</ a></li>
+</ul>
+</div>
+</div></div>
+
+</body>
+</html>

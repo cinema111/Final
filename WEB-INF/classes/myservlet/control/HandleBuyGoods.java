@@ -41,7 +41,7 @@ public class HandleBuyGoods extends HttpServlet {
         Connection con;
         PreparedStatement sql;
         try{ con= DriverManager.getConnection(uri);
-              String insertCondition="INSERT INTO order VALUES(?,?,?,?)";
+              String insertCondition="INSERT into order VALUES(?,?,?,?);";
               sql = con.prepareStatement(insertCondition);
               sql.setInt(1,0);
               sql.setString(2,loginBean.getLogname());

@@ -44,19 +44,20 @@
     out.print("<th><font color=yellow>放入购物车</font>");
     out.print("</tr>");
     String detailMess="";
+    String picture="welcome.jpg";
     while(rs.next()){
         String number=rs.getString(1);
         String name=rs.getString(2);
         String director=rs.getString(3);
         String date=rs.getString(4);
         String price=rs.getString(5);
-        String picture=rs.getString(6);
+        picture=rs.getString(6);
         detailMess=rs.getString(7);
         String goods="("+number+","+name+","+director+","+date+","+price+")#"+price;   //便于购物车计算价格，尾缀上“#”价格值
         goods= goods.replaceAll("\\p{Blank}","");
         String button="<form action='putGoodsServlet' method='post'>"
           +"<input type='hidden' name='java' value="+goods+">"
-          +"<input type='submit' value='放入购物车></form>";
+          +"<input type='submit' value='放入购物车'></form>";
         out.print("<br/>");
         out.print("<tr>");
         out.print("<td>"+number+"</td>");

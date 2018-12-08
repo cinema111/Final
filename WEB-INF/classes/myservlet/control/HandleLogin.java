@@ -44,7 +44,7 @@ public class HandleLogin extends HttpServlet{
                   dispatcher.forward(request,response); //转发
                 }
                 else{
-                  String backNews="您输人的用户名不存在,或密码不匹配";
+                  String backNews="您输入的用户名不存在,或密码不匹配";
                   //调用登录失败的方法
                   fail(request,response,logname,backNews);
                 }

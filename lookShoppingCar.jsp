@@ -39,7 +39,7 @@
         out.print("<td>"+del+"</td></tr>");
     }
     out.print("</table>");
-    String orderForm = "<form action='buyServlet'method='post'>" +
+    String orderForm = "<form action='buyServlet' method='post'>" +
       "<input type ='hidden'name = 'buy' value ="+buyGoods+">" +
       "<input type ='hidden'name = 'price' value="+priceSum+">" +
       "<input type ='submit' value ='Éú³É¶©µ¥'></form>";

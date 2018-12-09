@@ -26,7 +26,7 @@ public class HandleDelete extends HttpServlet{
             response.sendRedirect("login.jsp");
           }
       RequestDispatcher dispatcher =
-      request.getRequestDispatcher("ShoppingCar.jsp");
+      request.getRequestDispatcher("lookShoppingCar.jsp");
       dispatcher.forward(request, response);
     }
     public void doGet(HttpServletRequest request,HttpServletResponse

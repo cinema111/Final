@@ -27,10 +27,10 @@ public class SearchByCondition extends HttpServlet{
       condition= "SELECT * FROM ticket where director LIKE '%"+searchMess+"%'";
     }
     else if(radioMess.equals("film_name")){
-      condition= "SELECT * FROM ticket where name LIKE '%"+searchMess+"%'";
+      condition= "SELECT * FROM ticket where fname LIKE '%"+searchMess+"%'";
     }
     else if(radioMess.equals("date")){
-      condition= "SELECT * FROM ticket where name = "+searchMess;
+      condition= "SELECT * FROM ticket where date = '"+searchMess+"'";
     }
     HttpSession session=request.getSession(true);
     Connection con= null;

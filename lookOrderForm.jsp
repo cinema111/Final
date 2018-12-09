@@ -24,7 +24,7 @@
     String url="jdbc:mysql://127.0.0.1/cinema?"+"user=root&password=&characterEncoding=gb2312&serverTimezone=UTC";
     con=DriverManager.getConnection(url);
     sql=con.createStatement();
-    String cdn="SELECT id,mess,sum FROM order where logname='"+loginBean.getLogname()+"';";
+    String cdn="SELECT id,mess,sum FROM orderForm where logname='"+loginBean.getLogname()+"';";
     rs= sql.executeQuery(cdn);
     out.print("<table border=2>");
     out.print("<tr>");
